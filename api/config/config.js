@@ -1,4 +1,4 @@
 module.exports = {
-    'database': 'mongodb://locahost:27017/cookBookDB',
+    'database': 'mongodb://localhost:27017/cookBookDB',
     'port': process.env.PORT || 3000
 }
