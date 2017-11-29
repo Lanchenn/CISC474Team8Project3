@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/Lanchenn/CISC474Team8Project3#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "express": "^4.16.2",
-    "morgan": "^1.9.0"
+    "jsonwebtoken": "^8.1.0",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1"
   }
 }
