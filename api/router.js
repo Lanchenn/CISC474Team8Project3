@@ -22,7 +22,7 @@ module.exports = function(app) {
     recipesRoutes.get('/:id', recipeController.getRecipeByID); //get recipe with id=id
     recipesRoutes.get('/author/:authID', recipeController.getRecipeByAuth); //get all recipes written by user with id=authID
     recipesRoutes.get('/type/:myType', recipeController.getRecipeByMealType); //get recipes with mealtype = myType
-    recipesRoutes.get('/world/:worldType', recipeController.getRecipeByWorld=); //get recipes with worldCuisine = worldType
+    recipesRoutes.get('/world/:worldType', recipeController.getRecipeByWorld); //get recipes with worldCuisine = worldType
 
     recipesRoutes.post('/', recipeController.createRecipe);
 
