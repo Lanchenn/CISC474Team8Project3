@@ -20,24 +20,6 @@ exports.getRecipeByID = function (req, res, next) {
     });
 }
 
-//-------------------------------------------------------------
-
-exports.getRecipeByWorld= function (req, res, next) {
-   // console.log('in find recipe by WC function');
-    const worldCuisine = req.params['worldCuisine'];
-    console.log(worldCuisine);//this gives undefined
-    return Recipe.find({ worldCuisine: worldCuisine }, function (err, obj) {
-        if (err) {
-            res.status(400).send(err);
-        }
-        else if (!obj){
-            res.status(450).json({});
-        }
-        else {
-            res.status(200).json(obj);
-        }
-    });
-}
 
 
 //-------------------Functions below this line work------------------------------------------
@@ -81,6 +63,7 @@ exports.getRecipeByAuth= function (req, res, next) {
 exports.getRecipeByMealType= function (req, res, next) {
    // console.log('in find recipe by meal type function');
     const mealType = req.params['mealType'];
+    //console.log(mealType);
     return Recipe.find({ mealType: mealType }, function (err, obj) {
         if (err) {
             res.status(400).send(err);
@@ -94,6 +77,23 @@ exports.getRecipeByMealType= function (req, res, next) {
     });
 }
 
+exports.getRecipeByWorld= function (req, res, next) {
+    // console.log('in find recipe by WC function');
+     const worldCuisine = req.params['worldCuisine'];
+     console.log(worldCuisine);//this gives undefined
+     return Recipe.find({ worldCuisine: worldCuisine }, function (err, obj) {
+         if (err) {
+             res.status(400).send(err);
+         }
+         else if (!obj){
+             res.status(450).json({});
+         }
+         else {
+             res.status(200).json(obj);
+         }
+     });
+ }
+ 
 //uncomment to debug
 // exports.test=function(req,res,next){
 //     res.status(200).json({
