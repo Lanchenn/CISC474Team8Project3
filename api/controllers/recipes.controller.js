@@ -1,13 +1,15 @@
 const Recipe=require('../models/recipe');
 const Database = require('../config/config');
 
-//Current focus is this function:
-//Debug: returns nothing - err 450 obj doesn't exist, even w/ verified data. Problem w/ DB?
+
+//-------------------Functions below this line work------------------------------------------
+
+//QUESTION for class: why does findById work but findOne doesn't?
 exports.getRecipeByID = function (req, res, next) {
-    console.log('in find recipe by id function');
+ //   console.log('in find recipe by id function');
     const id = req.params['id'];
-    console.log('id = '+id);
-    return Recipe.findOne({ id: id }, function (err, obj) {
+   // console.log('id = '+id);
+    return Recipe.findById(id, function (err, obj) {
         if (err) {
             res.status(400).send(err);
         }
@@ -20,12 +22,6 @@ exports.getRecipeByID = function (req, res, next) {
         }
     });
 }
-
-
-
-
-
-//-------------------Functions below this line work------------------------------------------
 
 exports.getRecipes=function(req,res,next){
  //   console.log('in general get recipes function');
@@ -98,9 +94,9 @@ exports.getRecipeByWorld= function (req, res, next) {
  }
  
  exports.deleteRecipeByID = function (req, res, next) {
-    console.log('in delete recipe by id function');
+    //console.log('in delete recipe by id function');
     const id = req.params['delID'];
-    console.log('id = '+id);
+    //console.log('id = '+id);
     Recipe.findByIdAndRemove(id, (err, Recipe)=>{
         res.status(200).send("deleted");
     });
