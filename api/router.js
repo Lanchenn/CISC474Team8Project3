@@ -20,7 +20,7 @@ module.exports = function(app) {
     //use these to test new stuff (don't forget to add proper prefix - see below)
     recipesRoutes.get('/', recipeController.getRecipes);
     recipesRoutes.get('/:id', recipeController.getRecipeByID); //get recipe with id=id
-    recipesRoutes.get('/author/:author', recipeController.getRecipeByAuth); //get all recipes written by user with id=authID
+    recipesRoutes.get('/owner/:owner', recipeController.getRecipeByAuth); //get all recipes written by user with id=authID
     recipesRoutes.get('/type/:mealType', recipeController.getRecipeByMealType); //get recipes with mealtype = myType
     recipesRoutes.get('/world/:worldType', recipeController.getRecipeByWorld); //get recipes with worldCuisine = worldType
 

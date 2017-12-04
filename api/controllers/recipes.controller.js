@@ -6,6 +6,7 @@ const Recipe=require('../models/recipe');
 exports.getRecipeByID = function (req, res, next) {
     console.log('in find recipe by id function');
     const id = req.params['id'];
+    console.log('retrieved id = '+id);
     return Recipe.findOne({ id: id }, function (err, obj) {
         if (err) {
             res.status(400).send(err);
@@ -19,68 +20,36 @@ exports.getRecipeByID = function (req, res, next) {
     });
 }
 
-exports.getRecipeByMealType= function (req, res, next) {
-    console.log('in find recipe by meal type function');
-    const mealType = req.params['mealType'];
-    return Recipe.findOne({ mealType: mealType }, function (err, obj) {
-        if (err) {
-            res.status(400).send(err);
-        }
-        else if (!obj){
-            res.status(450).json({});
-        }
-        else {
-            res.status(200).json(obj);
-        }
-    });
-}
-
-exports.getRecipeByAuth= function (req, res, next) {
-    console.log('in find recipe by author function');
-    const author = req.params['author'];
-    return Recipe.findOne({ author: author }, function (err, obj) {
-        if (err) {
-            res.status(400).send(err);
-        }
-        else if (!obj){
-            res.status(450).json({});
-        }
-        else {
-            res.status(200).json(obj);
-        }
-    });
-}
-exports.getRecipeByWorld= function (req, res, next) {
-    console.log('in find recipe by author function');
-    const worldCuisine = req.params['worldCuisine'];
-    return Recipe.findOne({ worldCuisine: worldCuisine }, function (err, obj) {
-        if (err) {
-            res.status(400).send(err);
-        }
-        else if (!obj){
-            res.status(450).json({});
-        }
-        else {
-            res.status(200).json(obj);
-        }
-    });
-}
-
-
 //-------------------------------------------------------------
-//Works
+
+exports.getRecipeByWorld= function (req, res, next) {
+   // console.log('in find recipe by WC function');
+    const worldCuisine = req.params['worldCuisine'];
+    console.log(worldCuisine);//this gives undefined
+    return Recipe.find({ worldCuisine: worldCuisine }, function (err, obj) {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else if (!obj){
+            res.status(450).json({});
+        }
+        else {
+            res.status(200).json(obj);
+        }
+    });
+}
+
+
+//-------------------Functions below this line work------------------------------------------
+
 exports.getRecipes=function(req,res,next){
-    console.log('in general get recipes function');
+ //   console.log('in general get recipes function');
     Recipe.find({},function(err,recipes){
         res.status(201).json(recipes)
     })
 }
 
-//Works
 exports.createRecipe=function(req,res,next){
-    // res.status(200).json({
-    //     test: 'Good to go2'
-    // });
     
     var u=new Recipe({title: req.body.title, owner:req.body.owner, 
         description:req.body.description, ingredients:req.body.ingredients, steps:req.body.steps,
@@ -92,9 +61,42 @@ exports.createRecipe=function(req,res,next){
 
 
 }
-//Works
-exports.test=function(req,res,next){
-    res.status(200).json({
-        test: 'Good to go'
+
+exports.getRecipeByAuth= function (req, res, next) {
+   // console.log('in find recipe by author function');
+    const owner = req.params['owner'];
+    return Recipe.find({ owner: owner }, function (err, obj) {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else if (!obj){
+            res.status(450).json({});
+        }
+        else {
+            res.status(200).json(obj);
+        }
     });
 }
+
+exports.getRecipeByMealType= function (req, res, next) {
+   // console.log('in find recipe by meal type function');
+    const mealType = req.params['mealType'];
+    return Recipe.find({ mealType: mealType }, function (err, obj) {
+        if (err) {
+            res.status(400).send(err);
+        }
+        else if (!obj){
+            res.status(450).json({});
+        }
+        else {
+            res.status(200).json(obj);
+        }
+    });
+}
+
+//uncomment to debug
+// exports.test=function(req,res,next){
+//     res.status(200).json({
+//         test: 'Good to go'
+//     });
+// }
