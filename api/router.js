@@ -24,6 +24,9 @@ module.exports = function(app) {
     recipesRoutes.get('/type/:mealType', recipeController.getRecipeByMealType); //get recipes with mealtype = myType
     recipesRoutes.get('/world/:worldCuisine', recipeController.getRecipeByWorld); //get recipes with worldCuisine = worldType
 
+    recipesRoutes.get('/delete/:delID', recipeController.deleteRecipeByID); //get recipes with worldCuisine = worldType
+    
+
     recipesRoutes.post('/', recipeController.createRecipe);
 
     authenticationRoutes.post('/register', authenticationController.register);

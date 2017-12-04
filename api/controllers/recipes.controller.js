@@ -1,17 +1,18 @@
 const Recipe=require('../models/recipe');
-
+const Database = require('../config/config');
 
 //Current focus is this function:
 //Debug: returns nothing - err 450 obj doesn't exist, even w/ verified data. Problem w/ DB?
 exports.getRecipeByID = function (req, res, next) {
     console.log('in find recipe by id function');
     const id = req.params['id'];
-    console.log('retrieved id = '+id);
+    console.log('id = '+id);
     return Recipe.findOne({ id: id }, function (err, obj) {
         if (err) {
             res.status(400).send(err);
         }
         else if (!obj){
+            console.log('obj with id '+id+' not found');
             res.status(450).json({});
         }
         else {
@@ -19,6 +20,8 @@ exports.getRecipeByID = function (req, res, next) {
         }
     });
 }
+
+
 
 
 
@@ -94,6 +97,15 @@ exports.getRecipeByWorld= function (req, res, next) {
      });
  }
  
+ exports.deleteRecipeByID = function (req, res, next) {
+    console.log('in delete recipe by id function');
+    const id = req.params['delID'];
+    console.log('id = '+id);
+    Recipe.findByIdAndRemove(id, (err, Recipe)=>{
+        res.status(200).send("deleted");
+    });
+}
+
 //uncomment to debug
 // exports.test=function(req,res,next){
 //     res.status(200).json({
