@@ -23,11 +23,11 @@ module.exports = function(app) {
     recipesRoutes.get('/owner/:owner', recipeController.getRecipeByAuth); //get all recipes written by user with id=authID
     recipesRoutes.get('/type/:mealType', recipeController.getRecipeByMealType); //get recipes with mealtype = myType
     recipesRoutes.get('/world/:worldCuisine', recipeController.getRecipeByWorld); //get recipes with worldCuisine = worldType
-
     recipesRoutes.get('/delete/:delID', recipeController.deleteRecipeByID); //get recipes with worldCuisine = worldType
     
-
+   // recipesRoutes.post('/addRating/:id/:rating', recipeController.addRating);//use json obj instead at req.body
     recipesRoutes.post('/', recipeController.createRecipe);
+    recipesRoutes.post('/rating', recipeController.addRating);
 
     authenticationRoutes.post('/register', authenticationController.register);
     authenticationRoutes.post('/login', authenticationController.login);

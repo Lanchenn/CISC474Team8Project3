@@ -2,9 +2,10 @@ const Recipe=require('../models/recipe');
 const Database = require('../config/config');
 
 
+
+
 //-------------------Functions below this line work------------------------------------------
 
-//QUESTION for class: why does findById work but findOne doesn't?
 exports.getRecipeByID = function (req, res, next) {
  //   console.log('in find recipe by id function');
     const id = req.params['id'];
@@ -34,13 +35,11 @@ exports.createRecipe=function(req,res,next){
     
     var u=new Recipe({title: req.body.title, owner:req.body.owner, 
         description:req.body.description, ingredients:req.body.ingredients, steps:req.body.steps,
-        mealType:req.body.mealType, worldCuisine:req.body.worldCuisine}); //don't include rating on create
+        mealType:req.body.mealType, worldCuisine:req.body.worldCuisine, rating:0, numRatings:0});
 
     u.save(function(err,recipe){
         res.status(200).json(recipe);
     });
-
-
 }
 
 exports.getRecipeByAuth= function (req, res, next) {
@@ -101,7 +100,59 @@ exports.getRecipeByWorld= function (req, res, next) {
         res.status(200).send("deleted");
     });
 }
+//function to update rating of a recipe
+//params: recipe_id, rating
+exports.addRating= function (req, res, next) {
+    const id = req.body.id;
+   // console.log(id);
+    const paramRating = parseInt(req.body.rating);
+    //console.log(paramRating);
+    return Recipe.findById(id, function (err, obj) {
+         if (err) {
+             console.log('error');
+             res.status(400).send(err);
+         }
+         else if (!obj){
+            res.status(400).send('obj not found');
+         }
+         else {
+             console.log('obj found');
+            if(obj.rating==0){
+                console.log('rating is zero');
+                obj.rating = paramRating;
+                console.log('here1');
+                obj.numRatings = 1;
+                console.log('here2');
+                obj.save((err, todo) => {
+                    if (err) {
+                        res.status(500).send(err)
+                    }
+                    res.status(200).send(obj);
+                });
+            }
+            else{
+                //console.log(obj.rating);
+                console.log('rating = '+obj.rating + ' numRatings = '+obj.numRatings+' paramRating = '+paramRating)
+                console.log('value1 = '+obj.rating*obj.numRatings);
+                console.log((obj.rating*obj.numRatings));
+                console.log(obj.numRatings+1);
+                
+                newRating = ((obj.rating*obj.numRatings)+paramRating)/(obj.numRatings+1);
+                //console.log(newRating);
+                obj.rating = newRating;
+                obj.numRatings++;
+                //console.log(obj.rating);
 
+                obj.save((err, obj) => {
+                    if (err) {
+                        res.status(500).send(err)
+                    }
+                    res.status(200).send(obj);
+                });
+            }
+         }
+     });
+ }
 //uncomment to debug
 // exports.test=function(req,res,next){
 //     res.status(200).json({

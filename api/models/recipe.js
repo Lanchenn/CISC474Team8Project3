@@ -15,24 +15,14 @@ Schema = mongoose.Schema;
 
 const RecipeSchema = new Schema({
         title: {type: String, required: true},
-
-        //add validation to check that user is a username,
-        //or set type to acct (will be user'defined)
-        //leave as not required? Option to post anonymously?
         owner: {type: String},
-
         description: {type: String},
-
-        //1 <= ingredients <= 20
         ingredients: {type: [String], required: true},
-        
-        //can make into array if we want to enter data in UI as
-        //separate steps. Simpler as one long string, though
         steps: {type: String, required: true},
-
         mealType: {type: String, required: true},
         worldCuisine: {type: String, required: true},
-        rating: {type: Number}
+        rating: {type: Number},
+        numRatings: {type: Number}
 })
 
 //getters
