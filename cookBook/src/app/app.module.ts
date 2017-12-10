@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import {BootstrapModalModule} from 'ng2-bootstrap-modal';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ViewsComponent } from './views/views.component';
@@ -9,6 +9,7 @@ import { RecipeComponent } from './views/recipe/recipe.component';
 import { HomeComponent } from './views/home/home.component';
 import { SigninComponent } from './views/signin/signin.component';
 import { SignupComponent } from './views/signup/signup.component';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,10 @@ import { SignupComponent } from './views/signup/signup.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-    //BootstrapModalModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

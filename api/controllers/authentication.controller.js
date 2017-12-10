@@ -43,7 +43,7 @@ exports.register = function (req, res, next) {
     const password = req.body.password;
 
     if (!email) {
-        return res.status(422).send({ error: 'You must enter an email address.' });
+        return res.status(422).send({ error: 'You must enter an email address.' + " " + req.body.json});
     }
     if (!firstName || !lastName) {
         return res.status(422).send({ error: 'You must enter your full name.' });
@@ -60,7 +60,7 @@ exports.register = function (req, res, next) {
                 let userInfo = existingUser.toJson();
                 res.status(201).json({
                     token: 'JWT ' + generateToken(userInfo),
-                    user: userInfo
+                    user: userInfo,
                 });
             });
 

@@ -10,11 +10,11 @@ import {SignupComponent} from './views/signup/signup.component';
 
 const routes: Routes = [
 //  {path:'',redirectTo:'app',pathMatch:'full'},
-  {path:'',redirectTo:'views',pathMatch:'full'},
-  {path:'home',component:HomeComponent},
-  {path:'recipe',component:RecipeComponent},
-  {path:'signin',component:SigninComponent},
-  {path:'signup',component:SignupComponent}
+  {path: '', redirectTo: 'views', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent, pathMatch: 'full'},
+  {path: 'recipe', component: RecipeComponent, pathMatch: 'full'},
+  {path: 'signin', component: SigninComponent, pathMatch: 'full'},
+  {path: 'signup', component: SignupComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
