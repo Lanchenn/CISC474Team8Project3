@@ -43,13 +43,13 @@ exports.register = function (req, res, next) {
     const password = req.body.password;
 
     if (!email) {
-        return res.status(422).send({ error: 'You must enter an email address.' + " " + req.body.json});
+        return res.status(422).send({ error: 'You must enter an email address.' + " " + req.body.password});
     }
     if (!firstName || !lastName) {
-        return res.status(422).send({ error: 'You must enter your full name.' });
+        return res.status(422).send({ error: 'You must enter your full name.' + " " + req.body.email + " " + req.body.firstName + " " + req.body.lastName});
     }
     if (!password) {
-        return res.status(422).send({ error: 'You must enter a password.' });
+        return res.status(422).send({ error: 'You must enter a password.' + " " + req.body.password});
     }
 
     User.findOne({ email: email }, function (err, existingUser) {

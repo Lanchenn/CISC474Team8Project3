@@ -21,9 +21,16 @@ export class SignupComponent implements OnInit {
   signup(email, password, firstname, lastname) {
     console.log('called!');
     console.log('email is ' + email);
+/*
+    const body = {
+      email, password, firstname, lastname };*/
+    const body = {email: email, password: password, firstName: firstname, lastName: lastname};
     const parameter = JSON.stringify({email: email, password: password, firstName: firstname, lastName: lastname});
-    console.log(parameter);
-    this.apiService.register(parameter).subscribe();
+    //console.log(parameter);
+
+    //console.log("this is body: "  + body.firstname);
+    const temp = (this.apiService.register(body));
+    console.log(temp);
   }
 
 }
