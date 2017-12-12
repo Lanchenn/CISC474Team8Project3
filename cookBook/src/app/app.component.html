@@ -36,8 +36,8 @@
       </button>
       <a routerLink="home" routerLinkActive="active">
         <a class="navbar-nav">
-          <img src="https://imgur.com/8V2jUlF.png" width="5%"/>
-
+          <!--img src="https://imgur.com/8V2jUlF.png" width="5%"/-->
+          COOKIE
         </a>
       </a>
     </div>
@@ -46,23 +46,33 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a routerLink="home" routerLinkActive="active">Link <span class="sr-only">(current)</span></a>
+          <a routerLink="home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
         </li>
 
         <li>
-          <a routerLink="signup" routerLinkActive="active">Link</a>
+          <a routerLink="recipe" routerLinkActive="active">Recipe</a>
         </li>
 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li>
+              <a routerLink="recipe" routerLinkActive="active">Action</a>
+            </li>
+            <li>
+              <a routerLink="recipe" routerLinkActive="active">Another action</a>
+            </li>
+            <li>
+              <a routerLink="recipe" routerLinkActive="active">Something else here</a>
+            </li>
+
+            <li>
+              <a routerLink="recipe" routerLinkActive="active">Separated link</a>
+            </li>
+
+            <li>
+              <a routerLink="recipe" routerLinkActive="active">One more separated link</a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -76,8 +86,14 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a routerLink="Home" routerLinkActive="active">
+                          <button type="submit" class="btn btn-primary">
+                            <span font-colar="white">Sign In</span>
+                          </button>
+                        </a>
+                        <button class="btn btn-primary">
+                          <a routerLink="signup" routerLinkActive="active">Sign Up</a>
+                        </button>
       </form>
 
     </div>
