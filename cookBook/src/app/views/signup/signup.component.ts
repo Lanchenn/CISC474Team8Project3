@@ -27,26 +27,24 @@ export class SignupComponent implements OnInit {
       // make sure passwords match
       if (this.password === this.passwordConfirm) {
         const body = {email: this.email, password: this.password, firstName: this.firstName, lastName: this.lastName};
-        console.log('ok ' + JSON.stringify(body));
-
-        const temp = (this.apiService.register(body).subscribe(data => {
+        this.apiService.register(body).subscribe(data => {
           console.log(data);
           console.log(JSON.stringify(data));
           const tok = data['token'];
           localStorage.setItem('token', tok);
           console.log('my token is : ' + localStorage.getItem('token'));
         },
-          err => {console.log(err); }));
-        $('#error').hide();
+          err => {console.log(err); });
+        $('#signUpError').hide();
       }
       else {
-        $('#error').text('Passwords do not match!');
-        $('#error').show();
+        $('#signUpError').text('Passwords do not match!');
+        $('#signUpError').show();
       }
     }
     else {
-      $('#error').text('Please fill out all fields!');
-      $('#error').show();
+      $('#signUpError').text('Please fill out all fields!');
+      $('#signUpError').show();
     }
   }
 

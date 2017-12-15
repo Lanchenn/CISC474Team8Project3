@@ -45,11 +45,11 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="active" (click)="refresh()">
           <a routerLink="home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
         </li>
 
-        <li>
+        <li (click)="refresh()">
           <a routerLink="recipe" routerLinkActive="active">Recipe</a>
         </li>
 
@@ -91,11 +91,11 @@
         <button type="submit" class="btn" (click)="signin()">
           <a routerLink="home" routerLinkActive="active">Sign In</a>
         </button>
-        <button class="btn">
+        <button class="btn" (click)="refresh()">
           <a routerLink="signup" routerLinkActive="active">Sign Up</a>
         </button>
         <div>
-            <p id='error' style="color:red;" hidden>ERROR</p>
+          <p id='signInError' style="color:red;" hidden>ERROR</p>
         </div>
       </form>
 

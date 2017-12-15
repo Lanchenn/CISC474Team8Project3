@@ -17,17 +17,10 @@ export class AppComponent {
   constructor(private apiService: ApiService) { }
 
   signin() {
-
     const body = {email: this.email, password: this.password};
-    const temp = (this.apiService.signin(body).subscribe(data => {
-        console.log(JSON.stringify(data));
+    this.apiService.signin(body).subscribe(data => {
+        // sign in
         const fullName = data['user']['firstName'] + ' ' + data['user']['lastName'];
-        console.log(fullName);
-        /*
-          const tok = data['token'];
-          localStorage.setItem('token', tok);
-          console.log('my token is : ' + localStorage.getItem('token'));
-        */
         $('#helloUser').text('Hello ' + fullName + '!');
         $('#helloUser').show();
         $('#signin').hide();
@@ -35,8 +28,15 @@ export class AppComponent {
         alert('ur in');
       },
         err => {
-          $('#error').text(err['error']['error']);
-          $('#error').show();
-        }));
+          // could not verifiy - bad request
+          $('#signInError').text(err['error']['error']);
+          $('#signInError').show();
+        });
+  }
+
+  refresh() {
+    // hide any error & reset input vals
+    $('#signInError').hide();
+    $('input').val('');
   }
 }
