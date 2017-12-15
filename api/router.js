@@ -31,7 +31,7 @@ module.exports = function(app) {
 
     authenticationRoutes.post('/register', authenticationController.register);
     authenticationRoutes.post('/login', authenticationController.login);
-    authenticationRoutes.get('/authorize',passportService.requireAuth,authenticationController.authorize);
+    authenticationRoutes.get('/authorize',passportService.requireAuth, authenticationController.authorize);
 
     apiRoutes.use('/users',userRoutes);
     apiRoutes.use('/recipes', recipesRoutes); //prefix

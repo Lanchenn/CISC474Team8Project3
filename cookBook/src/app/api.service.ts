@@ -30,8 +30,7 @@ export class ApiService {
     /*    return this.http.post(this.registerURL, parameter, {headers: headers})
     .subscribe(res => console.log(res));
     */
-    return this.http.post(this.registerURL, parameter, {headers: headers})
-    .map((res: Response) => res.json());
+    return this.http.post(this.registerURL, parameter, {headers: headers});
   }
 
   private handleError(err: HttpErrorResponse | any) {

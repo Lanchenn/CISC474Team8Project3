@@ -29,8 +29,20 @@ export class SignupComponent implements OnInit {
     //console.log(parameter);
 
     //console.log("this is body: "  + body.firstname);
-    const temp = (this.apiService.register(body));
-    console.log(temp);
+    const temp = (this.apiService.register(body).subscribe(data => {
+      console.log(data);
+      console.log(JSON.stringify(data));
+      const json = JSON.stringify(data);
+      const tok = data['token'];
+      console.log(tok);
+      localStorage.setItem('token', tok);
+      console.log('my token is : ' + localStorage.getItem('token'));
+
+      localStorage.setItem('token', 'blahalbhalhblahsfd');
+      console.log('my token is : ' + localStorage.getItem('token'));
+     },
+      err => {console.log(err); }));
+    //console.log('here : ' + temp);
   }
 
 }
