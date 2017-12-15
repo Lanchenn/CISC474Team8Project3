@@ -28,6 +28,7 @@ module.exports = function(app) {
    // recipesRoutes.post('/addRating/:id/:rating', recipeController.addRating);//use json obj instead at req.body
     recipesRoutes.post('/', recipeController.createRecipe);
     recipesRoutes.post('/rating', recipeController.addRating);
+    recipesRoutes.post('/init', recipeController.initTestData);
 
     authenticationRoutes.post('/register', authenticationController.register);
     authenticationRoutes.post('/login', authenticationController.login);
