@@ -21,26 +21,38 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    // make sure passwords match
-    if (this.password === this.passwordConfirm) {
-      alert('good');
+    // make sure all fields filled
+    if (this.checkFilled()) {
 
-      const body = {email: this.email, password: this.password, firstName: this.firstName, lastName: this.lastName};
-      console.log('ok ' + JSON.stringify(body));
+      // make sure passwords match
+      if (this.password === this.passwordConfirm) {
+        const body = {email: this.email, password: this.password, firstName: this.firstName, lastName: this.lastName};
+        console.log('ok ' + JSON.stringify(body));
 
-      const temp = (this.apiService.register(body).subscribe(data => {
-        console.log(data);
-        console.log(JSON.stringify(data));
-        const tok = data['token'];
-        localStorage.setItem('token', tok);
-        console.log('my token is : ' + localStorage.getItem('token'));
-      },
-        err => {console.log(err); }));
+        const temp = (this.apiService.register(body).subscribe(data => {
+          console.log(data);
+          console.log(JSON.stringify(data));
+          const tok = data['token'];
+          localStorage.setItem('token', tok);
+          console.log('my token is : ' + localStorage.getItem('token'));
+        },
+          err => {console.log(err); }));
+        $('#error').hide();
+      }
+      else {
+        $('#error').text('Passwords do not match!');
+        $('#error').show();
+      }
     }
     else {
-      $('#pwdError').toggle();
-      alert('bad');
+      $('#error').text('Please fill out all fields!');
+      $('#error').show();
     }
+  }
+
+  checkFilled() {
+    return this.email != null && this.password != null && this.passwordConfirm != null
+      && this.firstName != null && this.lastName != null;
   }
 
 }

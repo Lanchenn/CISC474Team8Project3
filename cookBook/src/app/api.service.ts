@@ -8,31 +8,24 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiService {
 
-  private privateRecipesURL = 'http://localhost:3000/api/recipes';
-  private registerURL = 'http://localhost:3000/api/auth/register';
-
+  private base = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
-  getRecipes() {
-    return this.http
-      .get(this.privateRecipesURL)
-      .pipe(
-        catchError(this.handleError)
-      );
+  signin(body) {
+    return this.http.post(this.base + '/auth/login', body);
   }
 
   register(body) {
-    //alert('register');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    /*    return this.http.post(this.registerURL, parameter, {headers: headers})
-    .subscribe(res => console.log(res));
-    */
-    console.log('ok ' + JSON.stringify(body));
-    
-    return this.http.post(this.registerURL, body, {headers: headers});
+    return this.http.post(this.base + '/auth/register', body);
+  }
+
+  getRecipes() {
+    return this.http
+      .get(this.base + '/recipes')
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse | any) {

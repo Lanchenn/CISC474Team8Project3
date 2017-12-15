@@ -77,25 +77,31 @@
         </li-->
       </ul>
       <form id="signin" class="navbar-form navbar-right" role="form">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address">
-                        </div>
 
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">
-                        </div>
-                        <a routerLink="Home" routerLinkActive="active">
-                          <button type="submit" class="btn btn-primary">
-                            <span font-colar="white">Sign In</span>
-                          </button>
-                        </a>
-                        <button class="btn btn-primary">
-                          <a routerLink="signup" routerLinkActive="active">Sign Up</a>
-                        </button>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input id="email" type="email" [(ngModel)]="email" class="form-control" name="email" value="" placeholder="Email Address">
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input id="password" type="password" [(ngModel)]="password" class="form-control" name="password" value="" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn" (click)="signin()">
+          <a routerLink="home" routerLinkActive="active">Sign In</a>
+        </button>
+        <button class="btn">
+          <a routerLink="signup" routerLinkActive="active">Sign Up</a>
+        </button>
+        <div>
+            <p id='error' style="color:red;" hidden>ERROR</p>
+        </div>
       </form>
 
+      <div>
+        <p class="navbar-right" id='helloUser' style="color:green;" hidden>WELCOME</p>
+      </div>
     </div>
   </div>
 </nav>
