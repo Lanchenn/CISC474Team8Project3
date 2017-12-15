@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-signup',
@@ -11,6 +12,7 @@ export class SignupComponent implements OnInit {
 
   private email;
   private password;
+  private passwordConfirm;
   private firstName;
   private lastName;
   constructor(private apiService: ApiService) { }
@@ -18,31 +20,27 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  signup(email, password, firstname, lastname) {
-    console.log('called!');
-    console.log('email is ' + email);
-/*
-    const body = {
-      email, password, firstname, lastname };*/
-    const body = {email: email, password: password, firstName: firstname, lastName: lastname};
-    const parameter = JSON.stringify({email: email, password: password, firstName: firstname, lastName: lastname});
-    //console.log(parameter);
+  signup() {
+    // make sure passwords match
+    if (this.password === this.passwordConfirm) {
+      alert('good');
 
-    //console.log("this is body: "  + body.firstname);
-    const temp = (this.apiService.register(body).subscribe(data => {
-      console.log(data);
-      console.log(JSON.stringify(data));
-      const json = JSON.stringify(data);
-      const tok = data['token'];
-      console.log(tok);
-      localStorage.setItem('token', tok);
-      console.log('my token is : ' + localStorage.getItem('token'));
+      const body = {email: this.email, password: this.password, firstName: this.firstName, lastName: this.lastName};
+      console.log('ok ' + JSON.stringify(body));
 
-      localStorage.setItem('token', 'blahalbhalhblahsfd');
-      console.log('my token is : ' + localStorage.getItem('token'));
-     },
-      err => {console.log(err); }));
-    //console.log('here : ' + temp);
+      const temp = (this.apiService.register(body).subscribe(data => {
+        console.log(data);
+        console.log(JSON.stringify(data));
+        const tok = data['token'];
+        localStorage.setItem('token', tok);
+        console.log('my token is : ' + localStorage.getItem('token'));
+      },
+        err => {console.log(err); }));
+    }
+    else {
+      $('#pwdError').toggle();
+      alert('bad');
+    }
   }
 
 }

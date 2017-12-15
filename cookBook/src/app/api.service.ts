@@ -22,24 +22,21 @@ export class ApiService {
       );
   }
 
-  register(parameter) {
-
+  register(body) {
+    //alert('register');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     /*    return this.http.post(this.registerURL, parameter, {headers: headers})
     .subscribe(res => console.log(res));
     */
-    return this.http.post(this.registerURL, parameter, {headers: headers});
+    console.log('ok ' + JSON.stringify(body));
+    
+    return this.http.post(this.registerURL, body, {headers: headers});
   }
 
   private handleError(err: HttpErrorResponse | any) {
     console.error('An error occurred', err);
     return Observable.throw(err.message || err);
   }
-
-  purchase(item) {
-    alert('You bought the: ${recipe.author}');
-  }
-
 }
