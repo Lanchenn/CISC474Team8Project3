@@ -62,7 +62,10 @@ export class AppComponent implements OnInit {
       const length = Object.keys(data).length;
       if (length === 0) {
         // db is empty
-        this.apiService.initializeTestData(null);
+        this.apiService.initializeTestData(null).subscribe(d => {
+          console.log(d);
+        });
+        location.reload();
       }
     });
   }
