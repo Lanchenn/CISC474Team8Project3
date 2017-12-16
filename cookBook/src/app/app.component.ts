@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    // this.initializeTestData();
+    this.initializeTestData();
   }
 
   signin() {
@@ -45,7 +45,13 @@ export class AppComponent implements OnInit {
   }
 
   initializeTestData() {
-    this.apiService.initializeTestData(null);
+    this.apiService.getRecipes().subscribe(data => {
+      const length = Object.keys(data).length;
+      if (length === 0) {
+        // db is empty
+        this.apiService.initializeTestData(null);
+      }
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 <div>
-  <p>Refine your search by one of the following...</p>
   <a><div (click)='getRecipes()'>Show All</div></a>
+  <div>Refine your search by one of the following...</div>
   <div>World Cuisine: <a><div style="display: inline;" (click)='getRecipeByWorldCuisine("USA")'>USA</div></a>
       <div style="display: inline;">|</div>
       <a><div style="display: inline;" (click)='getRecipeByWorldCuisine("Puerto Rico")'>Puerto Rico</div></a>
@@ -15,53 +15,10 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="column">
-    <!--img src='{{NineteenthCentury[1]}}' style="width:100%">
-    <img src='{{NineteenthCentury[2]}}' style="width:100%"-->
-
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Renvyle_beach_stones_%283585122829%29.jpg" style="width:100%">
-    <img src="http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg" style="width:100%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg" style="width:100%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Trees_in_the_mist_%287699564540%29.jpg" style="width:100%">
-    <img src="https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5244886037001_5205241352001-vs.jpg?pubId=5104226627001&videoId=5205241352001" style="width:100%">
-    <img src="https://i.pinimg.com/736x/c7/62/a2/c762a2ae326a43d6412b07ea442dccc8--ballet-drawings-ballerina-drawing.jpg" style="width:100%">
+<div class="row">    
+  <div>
+      <div class="column" *ngFor="let recipe of recipes">
+          <img src={{recipe.url}} style="width:100%">
+      </div>
   </div>
-  <div class="column">
-    <!--img src='{{NineteenthCentury[11]}}' style="width:100%">
-    <img src='{{NineteenthCentury[12]}}' style="width:100%"-->
-
-    <img src="https://i.ytimg.com/vi/lt0WQ8JzLz4/maxresdefault.jpg" style="width:100%">
-    <img src="http://www.wildernessphotographs.com/images/xl/Snowy-Mountain-120-sec-cloud-flare_900px.jpg" style="width:100%">
-    <img src="https://ae01.alicdn.com/kf/HTB1mncZHpXXXXaWXXXXq6xXFXXXm/202180552/HTB1mncZHpXXXXaWXXXXq6xXFXXXm.jpg" style="width:100%">
-    <img src="https://media.timeout.com/images/103817003/image.jpg" style="width:100%">
-    <img src="https://anyminuteart.files.wordpress.com/2013/04/oil-painting-pallette-knife.jpg" style="width:100%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg" style="width:100%">
-  </div>
-
-  <div class="column">
-    <!--img src='{{NineteenthCentury[21]}}' style="width:100%">
-    <img src='{{NineteenthCentury[22]}}' style="width:100%"-->
-
-    <img src="https://i.pinimg.com/736x/c7/62/a2/c762a2ae326a43d6412b07ea442dccc8--ballet-drawings-ballerina-drawing.jpg" style="width:100%">
-    <img src="https://pbs.twimg.com/media/CgaxM7JWsAAuH-2.jpg:large" style="width:100%">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg" style="width:100%">
-    <img src="http://jonvilma.com/images/tower-5.jpg" style="width:100%">
-    <img src="https://sustainabledevelopment.un.org/content/images/image230_1231.jpg" style="width:100%">
-    <img src="http://hddesktopwallpapers.in/wp-content/uploads/2015/09/mist-wallpaper-mountains-1080x608.jpg" style="width:100%">
-    <img src="http://www.wildernessphotographs.com/images/xl/Snowy-Mountain-120-sec-cloud-flare_900px.jpg" style="width:100%">
-  </div>
-
-  <div class="column">
-    <!--img src='{{NineteenthCentury[31]}}' style="width:100%">
-    <img src='{{NineteenthCentury[32]}}' style="width:100%"-->
-
-    <img src="https://anyminuteart.files.wordpress.com/2013/04/oil-painting-pallette-knife.jpg" style="width:100%">
-    <img src="https://ae01.alicdn.com/kf/HTB1mncZHpXXXXaWXXXXq6xXFXXXm/202180552/HTB1mncZHpXXXXaWXXXXq6xXFXXXm.jpg" style="width:100%">
-    <img src="https://meetings.hyatt.com/content/dam/hyatt/VALEN_P005_Wedding_Cake-copy-4tile.jpg" style="width:100%">
-    <img src="https://media4.s-nbcnews.com/j/newscms/2017_07/1901116/roses-valentinesday_7213b8e75346f49fdc3009c314362a7b.nbcnews-ux-2880-1000.jpg" style="width:100%">
-    <img src="http://www.wildernessphotographs.com/images/xl/Snowy-Mountain-120-sec-cloud-flare_900px.jpg" style="width:100%">
-    <img src="https://sustainabledevelopment.un.org/content/images/image230_1231.jpg.jpg" style="width:100%">
-  </div>
-
 </div>

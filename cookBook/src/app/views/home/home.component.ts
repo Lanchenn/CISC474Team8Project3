@@ -8,27 +8,28 @@ import { ApiService } from '../../api.service';
 })
 export class HomeComponent implements OnInit {
 
-  private worldCuisine;
+  recipes: {};
   constructor(public apiService: ApiService) { }
 
   ngOnInit() {
+    this.getRecipes();
   }
 
   getRecipeByWorldCuisine(worldCuisine) {
     this.apiService.getRecipeByWorldCuisine(worldCuisine).subscribe(data => {
-      console.log(JSON.stringify(data));
+      this.recipes = data;
     });
   }
 
   getRecipeByMealType(mealType) {
     this.apiService.getRecipeByMealType(mealType).subscribe(data => {
-      console.log(JSON.stringify(data));
+      this.recipes = data;
     });
   }
 
   getRecipes() {
     this.apiService.getRecipes().subscribe(data => {
-      console.log(JSON.stringify(data));
+      this.recipes = data;
     });
   }
 
