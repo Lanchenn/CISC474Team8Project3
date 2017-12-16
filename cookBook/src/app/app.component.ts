@@ -13,10 +13,14 @@ export class AppComponent implements OnInit {
 
   private email;
   private password;
-  private loggedIn = false;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('loggedIn') === 'true') {
+      $('#helloUser').text('Hello ' + localStorage.getItem('name') + '!');
+      $('#helloUser').show();
+      $('#signin').hide();
+    }
     this.initializeTestData();
   }
 
@@ -27,9 +31,10 @@ export class AppComponent implements OnInit {
         const fullName = data['user']['firstName'] + ' ' + data['user']['lastName'];
         $('#helloUser').text('Hello ' + fullName + '!');
         $('#helloUser').show();
+        $('#logout').show();
         $('#signin').hide();
-        this.loggedIn = true;
-        alert('ur in');
+        localStorage.setItem('name', fullName);
+        localStorage.setItem('loggedIn', 'true');
       },
         err => {
           // could not verifiy - bad request
@@ -42,6 +47,11 @@ export class AppComponent implements OnInit {
     // hide any error & reset input vals
     $('#signInError').hide();
     $('input').val('');
+  }
+
+  logout() {
+    localStorage.setItem('loggedIn', '');
+    location.reload();
   }
 
   initializeTestData() {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import * as $ from 'jquery';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +11,18 @@ import { ApiService } from '../../api.service';
 export class HomeComponent implements OnInit {
 
   recipes: {};
-  constructor(public apiService: ApiService) { }
+  constructor(public apiService: ApiService, private app: AppComponent) { }
 
   ngOnInit() {
-    this.getRecipes();
+    if (localStorage.getItem('loggedIn') === 'true') {
+      $('#notLoggedIn').hide();
+      $('#content').show();
+      this.getRecipes();
+    }
+    else {
+      $('#content').hide();
+      $('#notLoggedIn').show();
+    }
   }
 
   getRecipeByWorldCuisine(worldCuisine) {

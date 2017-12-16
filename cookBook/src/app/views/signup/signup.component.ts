@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { Location } from '@angular/common';
 import * as $ from 'jquery';
 
 @Component({
@@ -15,9 +16,10 @@ export class SignupComponent implements OnInit {
   private passwordConfirm;
   private firstName;
   private lastName;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private location: Location) { }
 
   ngOnInit() {
+    console.log(this.location.path());
   }
 
   signup() {
@@ -36,6 +38,8 @@ export class SignupComponent implements OnInit {
         },
           err => {console.log(err); });
         $('#signUpError').hide();
+        $('input').val('');
+        location.assign('/home');
       }
       else {
         $('#signUpError').text('Passwords do not match!');

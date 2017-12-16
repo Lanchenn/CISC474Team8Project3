@@ -32,14 +32,6 @@ export class ApiService {
     return this.http.post(this.base + '/recipes/init', body);
   }
 
-   /*
-   // recipesRoutes.post('/addRating/:id/:rating', recipeController.addRating);//use json obj instead at req.body
-    recipesRoutes.post('/', recipeController.createRecipe);
-    recipesRoutes.post('/rating', recipeController.addRating);
-    recipesRoutes.post('/init', recipeController.initTestData);
-
-  */
-
   getRecipeByID(id) {
     return this.http.get(this.base + '/recipes/' + id);
   }
