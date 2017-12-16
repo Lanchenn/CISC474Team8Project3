@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import * as $ from 'jquery';
 
@@ -8,13 +8,17 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css'],
   providers: [ApiService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
   private email;
   private password;
   private loggedIn = false;
   constructor(private apiService: ApiService) { }
+
+  ngOnInit() {
+    // this.initializeTestData();
+  }
 
   signin() {
     const body = {email: this.email, password: this.password};
@@ -39,4 +43,9 @@ export class AppComponent {
     $('#signInError').hide();
     $('input').val('');
   }
+
+  initializeTestData() {
+    this.apiService.initializeTestData(null);
+  }
+
 }

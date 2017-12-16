@@ -1,10 +1,19 @@
-<p>
-  home works!
-</p>
-
-
-
-
+<div>
+  <p>Refine your search by one of the following...</p>
+  <a><div (click)='getRecipes()'>Show All</div></a>
+  <div>World Cuisine: <a><div style="display: inline;" (click)='getRecipeByWorldCuisine("USA")'>USA</div></a>
+      <div style="display: inline;">|</div>
+      <a><div style="display: inline;" (click)='getRecipeByWorldCuisine("Puerto Rico")'>Puerto Rico</div></a>
+      <div style="display: inline;">|</div>      
+      <a><div style="display: inline;" (click)='getRecipeByWorldCuisine("Japan")'>Japan</div></a>
+  </div>
+  <div>Meal Type: <a><div style="display: inline;" (click)='getRecipeByMealType("Breakfast")'>Breakfast</div></a>
+      <div style="display: inline;">|</div>    
+      <a><div style="display: inline;" (click)='getRecipeByMealType("Lunch")'>Lunch</div></a>
+      <div style="display: inline;">|</div>      
+      <a><div style="display: inline;" (click)='getRecipeByMealType("Dinner")'>Dinner</div></a>
+  </div>
+</div>
 
 <div class="row">
   <div class="column">
