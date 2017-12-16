@@ -1,8 +1,21 @@
-<div class="container">
+<div id='notLoggedIn'>
+		Please sign in to view content.
+</div>
+<div id='recipeBody' class="container">
 	<div class="row">
-		<h2>Screen Based Picture Optimization</h2>
-        <p (click)="getRecipes()">Best viewed </p>
-        <img class="visible-lg img-responsive" src="http://i.imgur.com/SXhJHgF.jpg" alt="">
-
+		<h1 id='title'>Screen Based Picture Optimization</h1>
+        <h2 id='author'>Best viewed </h2>
+        <img id='mainIMG' class="visible-lg img-responsive" src="http://i.imgur.com/SXhJHgF.jpg" alt="">
+		<div> 
+			<div id='description'></div>	
+			<div id='rating' style="display: inline;"></div>
+			<div id='numRatings' style="display: inline;"></div>					
+		</div>
+		<div>
+			<div>Ingredients: 
+				<li *ngFor="let ing of ingredients">{{ing}}</li>
+			</div>
+			<div id='steps'></div>
+		</div>
 	</div>
 </div>

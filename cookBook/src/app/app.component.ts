@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     localStorage.setItem('loggedIn', '');
+    localStorage.setItem('currentRecipe', '');
     location.reload();
   }
 

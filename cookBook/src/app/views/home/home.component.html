@@ -21,7 +21,8 @@
 <div class="row">    
   <div>
       <div class="column" *ngFor="let recipe of recipes">
-          <img src={{recipe.url}} style="width:100%">
+          <img id={{recipe._id}} src={{recipe.url}} style="width:100%" (click)='recipeDetails($event)'>
+          <div>{{recipe.title}}</div>
       </div>
   </div>
 </div>

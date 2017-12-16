@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  recipeDetails(event) {
+    localStorage.setItem('currentRecipe', event.currentTarget.id);
+    location.assign('/recipe');
+  }
+
   getRecipeByWorldCuisine(worldCuisine) {
     this.apiService.getRecipeByWorldCuisine(worldCuisine).subscribe(data => {
       this.recipes = data;
