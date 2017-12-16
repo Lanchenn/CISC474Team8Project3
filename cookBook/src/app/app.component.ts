@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     if (localStorage.getItem('loggedIn') === 'true') {
       $('#helloUser').text('Hello ' + localStorage.getItem('name') + '!');
       $('#helloUser').show();
+      $('#logout').show();
       $('#signin').hide();
     }
     this.initializeTestData();
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
         $('#signin').hide();
         localStorage.setItem('name', fullName);
         localStorage.setItem('loggedIn', 'true');
+        location.reload();
       },
         err => {
           // could not verifiy - bad request
