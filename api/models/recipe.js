@@ -8,6 +8,8 @@
             - mealType
             - worldCuisine
             - rating
+            - numRatings
+            - url
 **/
 
 const mongoose = require('mongoose'),
@@ -22,7 +24,8 @@ const RecipeSchema = new Schema({
         mealType: {type: String, required: true},
         worldCuisine: {type: String, required: true},
         rating: {type: Number},
-        numRatings: {type: Number}
+        numRatings: {type: Number},
+        url: {type: String, required: true}
 })
 
 //getters
@@ -49,6 +52,12 @@ RecipeSchema.methods.getTitle=function() {
   }
   RecipeSchema.methods.getRating=function() {
     return this.rating;
+  }
+  RecipeSchema.methods.getNumRatings=function() {
+    return this.numRatings;
+  }
+  RecipeSchema.methods.getURL=function() {
+    return this.url;
   }
 
 
