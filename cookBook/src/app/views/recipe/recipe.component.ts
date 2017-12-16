@@ -48,7 +48,7 @@ export class RecipeComponent implements OnInit {
       $('#steps').text(data['steps']);
 
       const num = data['numRatings'];
-      if (num != 1) {
+      if (num !== 1) {
         $('#numRatings').text('Rated by: ' + num + ' people!');
       }
       else {
